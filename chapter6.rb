@@ -44,3 +44,42 @@ HTML
 replaced = html.gsub(/<option value="(\w+)"(?: selected)?>(.*)<\/option>/, '\1,\2')
 
 puts replaced
+
+
+text = <<-TEXT
+def hello(name)
+  puts "Hello, \#{name}!"
+end
+
+hello('Alice')
+     
+hello('Bob')
+	
+hello('Carol')
+TEXT
+
+puts text.gsub(/^[ \t]+$/, '')
+
+
+text = <<-TEXT
+type=zip; filename=users.zip; size=1024;
+type=xml; filename=posts.xml; size=2048;
+TEXT
+
+puts text.scan(/(?<=filename=)[^;]+/)
+
+
+text = <<-TEXT
+type=zip; filename=users.zip; size=1024;
+type=xml; filename=posts.xml; size=2048;
+TEXT
+
+puts text.scan(/filename=[^;]+/).map { |s| s.split('=').last }
+
+
+text = <<-TEXT
+John:guitar, George:guitar, Paul:bass, Ringo:drum
+Freddie:vocal, Brian:guitar, John:bass, Roger:drum
+TEXT
+
+puts text.scan(/\w+(?=:bass)/)
