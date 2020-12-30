@@ -83,3 +83,19 @@ Freddie:vocal, Brian:guitar, John:bass, Roger:drum
 TEXT
 
 puts text.scan(/\w+(?=:bass)/)
+
+p '123-4567' =~ /\d{3}-\d{4}/
+p 'hello' =~ /\d{3}-\d{4}/
+
+p 'hello' !~ /\d{3}-\d{4}/
+
+text = "私の誕生日は1977年7月17日です"
+m = /(\d+)年(\d+)月(\d+)日/.match(text)
+p m
+p m.class
+p m[0]
+p m[1]
+p text.match(/(\d+)年(\d+)月(\d+)日/)
+m = /(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/.match(text)
+p m
+p m[:year]
